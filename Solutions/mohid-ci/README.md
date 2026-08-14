@@ -33,6 +33,10 @@ make reference-smoke
 The second command builds the existing reference image, copies the bundled
 `25m_deep` case into an isolated temporary directory, runs MOHID, checks its
 exit code and success marker, and writes logs under `results/reference/`.
+Because all three initial profiles are serial, a trailing single-domain
+annotation such as `: 1` is removed from `tree.dat` only in that temporary
+copy. Multi-domain annotations are rejected, and the action is recorded as
+`tree_mode` in `status.txt`; the source case remains unchanged.
 
 The current bundled case is only a startup/smoke test. It does **not** validate
 hydrodynamics or numerical accuracy.

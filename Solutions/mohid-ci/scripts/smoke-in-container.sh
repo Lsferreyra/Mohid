@@ -23,6 +23,22 @@ mkdir -p "$work_root/case" "$results_dir"
 cp -a "$input_dir/." "$work_root/case/"
 mkdir -p "$work_root/case/res/Run1" "$work_root/case/res/Res1"
 
+tree_mode=unchanged
+tree_file="$work_root/case/exe/tree.dat"
+if [[ -f "$tree_file" ]]; then
+    if grep -Eq '^[[:space:]]*\+.*:[[:space:]]*(0|[2-9][0-9]*|1[0-9]+)[[:space:]]*$' "$tree_file"; then
+        echo "Invalid serial smoke case: tree.dat requests zero or multiple domains" >&2
+        exit 2
+    fi
+
+    if grep -Eq '^[[:space:]]*\+.*:[[:space:]]*1[[:space:]]*$' "$tree_file"; then
+        sed -E '/^[[:space:]]*\+/ s/[[:space:]]*:[[:space:]]*1[[:space:]]*$//' \
+            "$tree_file" >"$tree_file.serial"
+        mv -- "$tree_file.serial" "$tree_file"
+        tree_mode=single-domain-normalized
+    fi
+fi
+
 set +e
 (
     cd "$work_root/case/exe"
@@ -32,8 +48,9 @@ status=$?
 set -e
 
 cp -a "$work_root/case/res/." "$results_dir/"
-printf 'exit_code=%s\nexecutable=%s\ntimeout_seconds=%s\n' \
-    "$status" "$executable" "$timeout_seconds" >"$results_dir/status.txt"
+printf 'exit_code=%s\nexecutable=%s\ntimeout_seconds=%s\ntree_mode=%s\n' \
+    "$status" "$executable" "$timeout_seconds" "$tree_mode" \
+    >"$results_dir/status.txt"
 
 cat "$results_dir/run.log"
 

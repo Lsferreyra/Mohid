@@ -21,7 +21,7 @@ RUN git init /tmp/hdf5 \
     && git -C /tmp/hdf5 checkout --detach FETCH_HEAD \
     && test "$(git -C /tmp/hdf5 rev-parse HEAD)" = "${HDF5_COMMIT}"
 
-RUN /bin/bash -lc 'source /opt/intel/oneapi/setvars.sh \
+RUN /bin/bash -lc 'source /opt/intel/oneapi/setvars.sh --force \
     && cmake \
         -S /tmp/hdf5 \
         -B /tmp/hdf5-build \
@@ -46,7 +46,7 @@ RUN /bin/bash -lc 'source /opt/intel/oneapi/setvars.sh \
 
 COPY . /opt/src/mohid
 
-RUN /bin/bash -lc 'source /opt/intel/oneapi/setvars.sh \
+RUN /bin/bash -lc 'source /opt/intel/oneapi/setvars.sh --force \
     && cmake \
         -S /opt/src/mohid/Solutions/mohid-ci \
         -B /opt/build/mohid \

@@ -547,7 +547,7 @@ Module ModuleHDF5
         integer(HID_T)                              :: space_id
         integer(HID_T)                              :: attr_id1, attr_id2, attr_id3
         integer(HSIZE_T), dimension(7)              :: dims
-        integer(HID_T)                              :: STAT_CALL
+        integer                                     :: STAT_CALL
         INTEGER(HID_T)                              :: new_type_id
 
         !Creates data space for Minimum and Maximum attributes
@@ -648,7 +648,7 @@ Module ModuleHDF5
         integer(HID_T)                              :: space_id
         integer(HID_T)                              :: attr_id1, attr_id2
         integer(HSIZE_T), dimension(7)              :: dims
-        integer(HID_T)                              :: STAT_CALL
+        integer                                     :: STAT_CALL
 
 
         !Creates data space for Average and Radius attributes
@@ -695,7 +695,7 @@ Module ModuleHDF5
         
         !Local-----------------------------------------------------------------
         integer(HID_T)                              :: attr_id
-        integer(HID_T)                              :: STAT_CALL
+        integer                                     :: STAT_CALL
         integer(HSIZE_T), dimension(7)              :: dims
         real(4)                                     :: OldValue = 0
 
@@ -1270,10 +1270,10 @@ Module ModuleHDF5
         !Local-----------------------------------------------------------------
         integer                                         :: STAT_, ready_
         integer(HSIZE_T), dimension(7)                  :: dims
-        integer(HID_T)                                  :: Rank
+        integer                                         :: Rank
         integer(HID_T)                                  :: NumType
         integer(HID_T)                                  :: space_id
-        integer(HID_T)                                  :: STAT_CALL
+        integer                                         :: STAT_CALL
         integer(HID_T)                                  :: dset_id, prp_id, gr_id
         character(StringLength)                         :: AuxChar
         real(4)                                         :: Minimum, Maximum
@@ -1374,10 +1374,10 @@ Module ModuleHDF5
         !Local-----------------------------------------------------------------
         integer                                         :: STAT_, ready_
         integer(HSIZE_T), dimension(7)                  :: dims
-        integer(HID_T)                                  :: Rank
+        integer                                         :: Rank
         integer(HID_T)                                  :: NumType
         integer(HID_T)                                  :: space_id
-        integer(HID_T)                                  :: STAT_CALL
+        integer                                         :: STAT_CALL
         integer(HID_T)                                  :: dset_id, prp_id, gr_id
         character(StringLength)                         :: AuxChar
         real(4)                                         :: Minimum, Maximum
@@ -1478,10 +1478,10 @@ Module ModuleHDF5
         !Local-----------------------------------------------------------------
         integer                                         :: STAT_, ready_
         integer(HSIZE_T), dimension(7)                  :: dims
-        integer(HID_T)                                  :: Rank
+        integer                                         :: Rank
         integer(HID_T)                                  :: NumType
         integer(HID_T)                                  :: space_id
-        integer(HID_T)                                  :: STAT_CALL
+        integer                                         :: STAT_CALL
         integer(HID_T)                                  :: dset_id, prp_id, gr_id
         character(StringLength)                         :: AuxChar
         real(4)                                         :: Minimum, Maximum
@@ -1590,10 +1590,10 @@ Module ModuleHDF5
         !Local-----------------------------------------------------------------
         integer                                         :: STAT_, ready_
         integer(HSIZE_T), dimension(7)                  :: dims
-        integer(HID_T)                                  :: Rank
+        integer                                         :: Rank
         integer(HID_T)                                  :: NumType
         integer(HID_T)                                  :: space_id
-        integer(HID_T)                                  :: STAT_CALL
+        integer                                         :: STAT_CALL
         integer(HID_T)                                  :: dset_id, prp_id, gr_id
         character(StringLength)                         :: AuxChar
         real(4)                                         :: Minimum, Maximum
@@ -1701,10 +1701,10 @@ Module ModuleHDF5
         !Local-----------------------------------------------------------------
         integer                                         :: STAT_, ready_
         integer(HSIZE_T), dimension(7)                  :: dims
-        integer(HID_T)                                  :: Rank
+        integer                                         :: Rank
         integer(HID_T)                                  :: NumType
         integer(HID_T)                                  :: space_id
-        integer(HID_T)                                  :: STAT_CALL
+        integer                                         :: STAT_CALL
         integer(HID_T)                                  :: dset_id, prp_id, gr_id
         character(StringLength)                         :: AuxChar
         real(4)                                         :: Minimum, Maximum
@@ -1808,10 +1808,10 @@ Module ModuleHDF5
         !Local-----------------------------------------------------------------
         integer                                         :: STAT_, ready_
         integer(HSIZE_T), dimension(7)                  :: dims
-        integer(HID_T)                                  :: Rank
+        integer                                         :: Rank
         integer(HID_T)                                  :: NumType
         integer(HID_T)                                  :: space_id
-        integer(HID_T)                                  :: STAT_CALL
+        integer                                         :: STAT_CALL
         integer(HID_T)                                  :: dset_id, prp_id, gr_id
         character(StringLength)                         :: AuxChar
         real(4)                                         :: Minimum, Maximum
@@ -1912,17 +1912,17 @@ Module ModuleHDF5
         character(len=*)                                :: GroupName
         character(len=*)                                :: Name
         character(len=*)                                :: Units
-        integer(HID_T), dimension(:)      , pointer     :: Array1D
+        integer(4), dimension(:)      , pointer     :: Array1D
         integer, optional                               :: OutputNumber
         integer, optional                               :: STAT
 
         !Local-----------------------------------------------------------------
         integer                                         :: STAT_, ready_
         integer(HSIZE_T), dimension(7)                  :: dims
-        integer(HID_T)                                  :: Rank
+        integer                                         :: Rank
         integer(HID_T)                                  :: NumType
         integer(HID_T)                                  :: space_id
-        integer(HID_T)                                  :: STAT_CALL
+        integer                                         :: STAT_CALL
         integer(HID_T)                                  :: dset_id, prp_id, gr_id
         character(StringLength)                         :: AuxChar
         real(4)                                         :: Minimum, Maximum
@@ -2014,17 +2014,17 @@ Module ModuleHDF5
         character(len=*)                                :: GroupName
         character(len=*)                                :: Name
         character(len=*)                                :: Units
-        integer(HID_T), dimension(:, :)   , pointer     :: Array2D
+        integer(4), dimension(:, :)   , pointer     :: Array2D
         integer, optional                               :: OutputNumber
         integer, optional                               :: STAT
 
         !Local-----------------------------------------------------------------
         integer                                         :: STAT_, ready_
         integer(HSIZE_T), dimension(7)                  :: dims
-        integer(HID_T)                                  :: Rank
+        integer                                         :: Rank
         integer(HID_T)                                  :: NumType
         integer(HID_T)                                  :: space_id
-        integer(HID_T)                                         :: STAT_CALL
+        integer                                                :: STAT_CALL
         integer(HID_T)                                  :: dset_id, prp_id, gr_id
         character(StringLength)                         :: AuxChar
         real(4)                                         :: Minimum, Maximum
@@ -2119,17 +2119,17 @@ Module ModuleHDF5
         character(len=*)                                :: GroupName
         character(len=*)                                :: Name
         character(len=*)                                :: Units
-        integer(HID_T), dimension(:, :, :), pointer     :: Array3D
+        integer(4), dimension(:, :, :), pointer     :: Array3D
         integer, optional                               :: OutputNumber
         integer, optional                               :: STAT
 
         !Local-----------------------------------------------------------------
         integer                                         :: STAT_, ready_
         integer(HSIZE_T), dimension(7)                  :: dims
-        integer(HID_T)                                  :: Rank
+        integer                                         :: Rank
         integer(HID_T)                                  :: NumType
         integer(HID_T)                                  :: space_id
-        integer(HID_T)                                         :: STAT_CALL
+        integer                                                :: STAT_CALL
         integer(HID_T)                                  :: dset_id, prp_id, gr_id
         character(StringLength)                         :: AuxChar
         real(4)                                         :: Minimum, Maximum
@@ -2225,7 +2225,8 @@ Module ModuleHDF5
                              NumType, GroupName, ItemName)
 
         !Arguments-------------------------------------------------------------
-        integer (HID_T)                             :: FileID, Rank, space_id
+        integer(HID_T)                             :: FileID, space_id
+        integer                                    :: Rank
         integer (HID_T)                             :: prp_id, gr_id, dset_id, NumType
         integer (HSIZE_T), dimension(7)             :: dims
         character(len=*)                            :: GroupName
@@ -2290,8 +2291,8 @@ Module ModuleHDF5
         logical, optional, intent(in)               :: CreateMinMaxAttributes
 
         !Local-----------------------------------------------------------------
-        integer(HID_T)                              :: nmembers    
-        integer(HID_T)                              :: STAT_CALL
+        integer                                     :: nmembers
+        integer                                     :: STAT_CALL
         character(StringLength)                     :: ParentGroupName
         integer  (HID_T)                            :: gr_id
         logical                                     :: lCreateMinMaxAttributes
@@ -2351,7 +2352,7 @@ Module ModuleHDF5
         integer (HID_T)                             :: dset_id
 
         !Local-----------------------------------------------------------------
-        integer(HID_T)                              :: STAT_CALL
+        integer                                     :: STAT_CALL
 
         !Closes property list
         call h5pclose_f  (prp_id, STAT_CALL) 
@@ -2388,9 +2389,9 @@ Module ModuleHDF5
         !Local-----------------------------------------------------------------
         integer                                         :: STAT_, ready_
         integer(HSIZE_T), dimension(7)                  :: dims
-        integer(HID_T)                                  :: Rank
+        integer                                         :: Rank
         integer(HID_T)                                  :: NumType
-        integer(HID_T)                                  :: STAT_CALL
+        integer                                         :: STAT_CALL
         integer(HID_T)                                  :: dset_id, gr_id
         character(StringLength)                         :: AuxChar
         logical                                         :: AllocateMatrix
@@ -2486,9 +2487,9 @@ Module ModuleHDF5
         !Local-----------------------------------------------------------------
         integer                                         :: STAT_, ready_
         integer(HSIZE_T), dimension(7)                  :: dims
-        integer(HID_T)                                  :: Rank
+        integer                                         :: Rank
         integer(HID_T)                                  :: NumType
-        integer(HID_T)                                  :: STAT_CALL
+        integer                                         :: STAT_CALL
         integer(HID_T)                                  :: dset_id, gr_id
         character(StringLength)                         :: AuxChar
         logical                                         :: AllocateMatrix
@@ -2590,9 +2591,9 @@ Module ModuleHDF5
         !Local-----------------------------------------------------------------
         integer                                         :: STAT_, ready_
         integer(HSIZE_T), dimension(7)                  :: dims
-        integer(HID_T)                                  :: Rank
+        integer                                         :: Rank
         integer(HID_T)                                  :: NumType
-        integer(HID_T)                                  :: STAT_CALL
+        integer                                         :: STAT_CALL
         integer(HID_T)                                  :: dset_id, gr_id
         character(StringLength)                         :: AuxChar
         logical                                         :: AllocateMatrix
@@ -2704,9 +2705,9 @@ Module ModuleHDF5
         !Local-----------------------------------------------------------------
         integer                                         :: STAT_, ready_
         integer(HSIZE_T), dimension(7)                  :: dims
-        integer(HID_T)                                  :: Rank
+        integer                                         :: Rank
         integer(HID_T)                                  :: NumType
-        integer(HID_T)                                  :: STAT_CALL
+        integer                                         :: STAT_CALL
         integer(HID_T)                                  :: dset_id, gr_id
         character(StringLength)                         :: AuxChar
         logical                                         :: AllocateMatrix
@@ -2807,9 +2808,9 @@ Module ModuleHDF5
         !Local-----------------------------------------------------------------
         integer                                         :: STAT_, ready_
         integer(HSIZE_T), dimension(7)                  :: dims
-        integer(HID_T)                                  :: Rank
+        integer                                         :: Rank
         integer(HID_T)                                  :: NumType
-        integer(HID_T)                                  :: STAT_CALL
+        integer                                         :: STAT_CALL
         integer(HID_T)                                  :: dset_id, gr_id
         character(StringLength)                         :: AuxChar
         logical                                         :: AllocateMatrix
@@ -2911,9 +2912,9 @@ Module ModuleHDF5
         !Local-----------------------------------------------------------------
         integer                                         :: STAT_, ready_
         integer(HSIZE_T), dimension(7)                  :: dims
-        integer(HID_T)                                  :: Rank
+        integer                                         :: Rank
         integer(HID_T)                                  :: NumType
-        integer(HID_T)                                  :: STAT_CALL
+        integer                                         :: STAT_CALL
         integer(HID_T)                                  :: dset_id, gr_id
         character(StringLength)                         :: AuxChar
         logical                                         :: AllocateMatrix
@@ -3019,9 +3020,9 @@ Module ModuleHDF5
         !Local-----------------------------------------------------------------
         integer                                         :: STAT_, ready_
         integer(HSIZE_T), dimension(7)                  :: dims
-        integer(HID_T)                                  :: Rank
+        integer                                         :: Rank
         integer(HID_T)                                  :: NumType
-        integer(HID_T)                                  :: STAT_CALL
+        integer                                         :: STAT_CALL
         integer(HID_T)                                  :: dset_id, gr_id
         character(StringLength)                         :: AuxChar
         logical                                         :: AllocateMatrix
@@ -3118,9 +3119,9 @@ Module ModuleHDF5
         !Local-----------------------------------------------------------------
         integer                                         :: STAT_, ready_
         integer(HSIZE_T), dimension(7)                  :: dims
-        integer(HID_T)                                  :: Rank
+        integer                                         :: Rank
         integer(HID_T)                                  :: NumType
-        integer(HID_T)                                         :: STAT_CALL
+        integer                                                :: STAT_CALL
         integer(HID_T)                                  :: dset_id, gr_id
         character(StringLength)                         :: AuxChar
         logical                                         :: AllocateMatrix
@@ -3222,9 +3223,9 @@ Module ModuleHDF5
         !Local-----------------------------------------------------------------
         integer                                         :: STAT_, ready_
         integer(HSIZE_T), dimension(7)                  :: dims
-        integer(HID_T)                                  :: Rank
+        integer                                         :: Rank
         integer(HID_T)                                  :: NumType
-        integer(HID_T)                                         :: STAT_CALL
+        integer                                                :: STAT_CALL
         integer(HID_T)                                  :: dset_id, gr_id
         character(StringLength)                         :: AuxChar
         logical                                         :: AllocateMatrix
@@ -3348,16 +3349,18 @@ Module ModuleHDF5
         integer(HSIZE_T), dimension(7)                  :: dims, maxdims
         integer(HSIZE_T), dimension(7)                  :: dims_mem
         integer(HID_T)                                  :: dset_id, gr_id, datatype_id
-        integer(HID_T)                                  :: space_id, rank, rank_out
-        integer(HID_T)                                  :: memspace_id, NumType, class_id
+        integer(HID_T)                                  :: space_id
+        integer                                         :: rank, rank_out
+        integer(HID_T)                                  :: memspace_id, NumType
+        integer                                         :: class_id
         integer(HSSIZE_T), dimension(:), allocatable    :: offset_in
         integer(HSIZE_T ), dimension(:), allocatable    :: count_in
         integer(HSSIZE_T), dimension(:), allocatable    :: offset_out
         integer(HSIZE_T ), dimension(:), allocatable    :: count_out
-        integer(HID_T)                                  :: STAT_CALL
-        integer(HID_T), dimension(:),       pointer     :: iArray1D
-        integer(HID_T), dimension(:, :),    pointer     :: iArray2D
-        integer(HID_T), dimension(:, :, :), pointer     :: iArray3D
+        integer                                         :: STAT_CALL
+        integer(4), dimension(:),       pointer     :: iArray1D
+        integer(4), dimension(:, :),    pointer     :: iArray2D
+        integer(4), dimension(:, :, :), pointer     :: iArray3D
         logical                                         :: TryToRead_
         character(StringLength)                         :: AuxChar
 
@@ -3571,13 +3574,15 @@ Module ModuleHDF5
         integer(HSIZE_T), dimension(7)                  :: dims, maxdims
         integer(HSIZE_T), dimension(7)                  :: dims_mem
         integer(HID_T)                                  :: dset_id, gr_id, datatype_id
-        integer(HID_T)                                  :: space_id, rank, rank_out
-        integer(HID_T)                                  :: memspace_id, NumType, class_id
+        integer(HID_T)                                  :: space_id
+        integer                                         :: rank, rank_out
+        integer(HID_T)                                  :: memspace_id, NumType
+        integer                                         :: class_id
         integer(HSSIZE_T), dimension(:), allocatable    :: offset_in
         integer(HSIZE_T ), dimension(:), allocatable    :: count_in
         integer(HSSIZE_T), dimension(:), allocatable    :: offset_out
         integer(HSIZE_T ), dimension(:), allocatable    :: count_out
-        integer(HID_T)                                  :: STAT_CALL
+        integer                                         :: STAT_CALL
         character(StringLength)                         :: AuxChar
         
         !Begin-----------------------------------------------------------------
@@ -3731,13 +3736,15 @@ Module ModuleHDF5
         integer(HSIZE_T), dimension(7)                  :: dims, maxdims
         integer(HSIZE_T), dimension(7)                  :: dims_mem
         integer(HID_T)                                  :: dset_id, gr_id, datatype_id
-        integer(HID_T)                                  :: space_id, rank, rank_out
-        integer(HID_T)                                  :: memspace_id, NumType, class_id
+        integer(HID_T)                                  :: space_id
+        integer                                         :: rank, rank_out
+        integer(HID_T)                                  :: memspace_id, NumType
+        integer                                         :: class_id
         integer(HSSIZE_T), dimension(:), allocatable    :: offset_in
         integer(HSIZE_T ), dimension(:), allocatable    :: count_in
         integer(HSSIZE_T), dimension(:), allocatable    :: offset_out
         integer(HSIZE_T ), dimension(:), allocatable    :: count_out
-        integer(HID_T)                                  :: STAT_CALL
+        integer                                         :: STAT_CALL
         character(StringLength)                         :: AuxChar
         
         !Begin-----------------------------------------------------------------
@@ -3914,13 +3921,15 @@ Module ModuleHDF5
         integer(HSIZE_T), dimension(7)                  :: dims, maxdims
         integer(HSIZE_T), dimension(7)                  :: dims_mem
         integer(HID_T)                                  :: dset_id, gr_id, datatype_id
-        integer(HID_T)                                  :: space_id, rank, rank_out
-        integer(HID_T)                                  :: memspace_id, NumType, class_id
+        integer(HID_T)                                  :: space_id
+        integer                                         :: rank, rank_out
+        integer(HID_T)                                  :: memspace_id, NumType
+        integer                                         :: class_id
         integer(HSSIZE_T), dimension(:), allocatable    :: offset_in
         integer(HSIZE_T ), dimension(:), allocatable    :: count_in
         integer(HSSIZE_T), dimension(:), allocatable    :: offset_out
         integer(HSIZE_T ), dimension(:), allocatable    :: count_out
-        integer(HID_T)                                  :: STAT_CALL
+        integer                                         :: STAT_CALL
         character(StringLength)                         :: AuxChar
         
         !Begin-----------------------------------------------------------------
@@ -4101,13 +4110,15 @@ Module ModuleHDF5
         integer(HSIZE_T), dimension(7)                  :: dims, maxdims
         integer(HSIZE_T), dimension(7)                  :: dims_mem
         integer(HID_T)                                  :: dset_id, gr_id, datatype_id
-        integer(HID_T)                                  :: space_id, rank, rank_out
-        integer(HID_T)                                  :: memspace_id, NumType, class_id
+        integer(HID_T)                                  :: space_id
+        integer                                         :: rank, rank_out
+        integer(HID_T)                                  :: memspace_id, NumType
+        integer                                         :: class_id
         integer(HSSIZE_T), dimension(:), allocatable    :: offset_in
         integer(HSIZE_T ), dimension(:), allocatable    :: count_in
         integer(HSSIZE_T), dimension(:), allocatable    :: offset_out
         integer(HSIZE_T ), dimension(:), allocatable    :: count_out
-        integer(HID_T)                                  :: STAT_CALL
+        integer                                         :: STAT_CALL
         character(StringLength)                         :: AuxChar
         
         !Begin-----------------------------------------------------------------
@@ -4261,13 +4272,15 @@ Module ModuleHDF5
         integer(HSIZE_T), dimension(7)                  :: dims, maxdims
         integer(HSIZE_T), dimension(7)                  :: dims_mem
         integer(HID_T)                                  :: dset_id, gr_id, datatype_id
-        integer(HID_T)                                  :: space_id, rank, rank_out
-        integer(HID_T)                                  :: memspace_id, NumType, class_id
+        integer(HID_T)                                  :: space_id
+        integer                                         :: rank, rank_out
+        integer(HID_T)                                  :: memspace_id, NumType
+        integer                                         :: class_id
         integer(HSSIZE_T), dimension(:), allocatable    :: offset_in
         integer(HSIZE_T ), dimension(:), allocatable    :: count_in
         integer(HSSIZE_T), dimension(:), allocatable    :: offset_out
         integer(HSIZE_T ), dimension(:), allocatable    :: count_out
-        integer(HID_T)                                  :: STAT_CALL
+        integer                                         :: STAT_CALL
         character(StringLength)                         :: AuxChar
         
         !Begin-----------------------------------------------------------------
@@ -4450,13 +4463,15 @@ Module ModuleHDF5
         integer(HSIZE_T), dimension(7)                  :: dims, maxdims
         integer(HSIZE_T), dimension(7)                  :: dims_mem
         integer(HID_T)                                  :: dset_id, gr_id, datatype_id
-        integer(HID_T)                                  :: space_id, rank, rank_out
-        integer(HID_T)                                  :: memspace_id, NumType, class_id
+        integer(HID_T)                                  :: space_id
+        integer                                         :: rank, rank_out
+        integer(HID_T)                                  :: memspace_id, NumType
+        integer                                         :: class_id
         integer(HSSIZE_T), dimension(:), allocatable    :: offset_in
         integer(HSIZE_T ), dimension(:), allocatable    :: count_in
         integer(HSSIZE_T), dimension(:), allocatable    :: offset_out
         integer(HSIZE_T ), dimension(:), allocatable    :: count_out
-        integer(HID_T)                                  :: STAT_CALL
+        integer                                         :: STAT_CALL
         character(StringLength)                         :: AuxChar
         
         !Begin-----------------------------------------------------------------
@@ -4666,13 +4681,15 @@ Module ModuleHDF5
         integer(HSIZE_T), dimension(7)                  :: dims, maxdims
         integer(HSIZE_T), dimension(7)                  :: dims_mem
         integer(HID_T)                                  :: dset_id, gr_id, datatype_id
-        integer(HID_T)                                  :: space_id, rank, rank_out
-        integer(HID_T)                                  :: memspace_id, NumType, class_id
+        integer(HID_T)                                  :: space_id
+        integer                                         :: rank, rank_out
+        integer(HID_T)                                  :: memspace_id, NumType
+        integer                                         :: class_id
         integer(HSSIZE_T), dimension(:), allocatable    :: offset_in
         integer(HSIZE_T ), dimension(:), allocatable    :: count_in
         integer(HSSIZE_T), dimension(:), allocatable    :: offset_out
         integer(HSIZE_T ), dimension(:), allocatable    :: count_out
-        integer(HID_T)                                  :: STAT_CALL
+        integer                                         :: STAT_CALL
         character(StringLength)                         :: AuxChar
         
         !Begin-----------------------------------------------------------------
@@ -4826,13 +4843,15 @@ Module ModuleHDF5
         integer(HSIZE_T), dimension(7)                  :: dims, maxdims
         integer(HSIZE_T), dimension(7)                  :: dims_mem
         integer(HID_T)                                  :: dset_id, gr_id, datatype_id
-        integer(HID_T)                                  :: space_id, rank, rank_out
-        integer(HID_T)                                  :: memspace_id, NumType, class_id
+        integer(HID_T)                                  :: space_id
+        integer                                         :: rank, rank_out
+        integer(HID_T)                                  :: memspace_id, NumType
+        integer                                         :: class_id
         integer(HSSIZE_T), dimension(:), allocatable    :: offset_in
         integer(HSIZE_T ), dimension(:), allocatable    :: count_in
         integer(HSSIZE_T), dimension(:), allocatable    :: offset_out
         integer(HSIZE_T ), dimension(:), allocatable    :: count_out
-        integer(HID_T)                                  :: STAT_CALL
+        integer                                         :: STAT_CALL
         character(StringLength)                         :: AuxChar
         integer, dimension(:, :, :)   , pointer         :: Array3D
         
@@ -5042,13 +5061,15 @@ Module ModuleHDF5
         integer(HSIZE_T), dimension(7)                  :: dims, maxdims
         integer(HSIZE_T), dimension(7)                  :: dims_mem
         integer(HID_T)                                  :: dset_id, gr_id, datatype_id
-        integer(HID_T)                                  :: space_id, rank, rank_out
-        integer(HID_T)                                  :: memspace_id, NumType, class_id
+        integer(HID_T)                                  :: space_id
+        integer                                         :: rank, rank_out
+        integer(HID_T)                                  :: memspace_id, NumType
+        integer                                         :: class_id
         integer(HSSIZE_T), dimension(:), allocatable    :: offset_in
         integer(HSIZE_T ), dimension(:), allocatable    :: count_in
         integer(HSSIZE_T), dimension(:), allocatable    :: offset_out
         integer(HSIZE_T ), dimension(:), allocatable    :: count_out
-        integer(HID_T)                                  :: STAT_CALL
+        integer                                         :: STAT_CALL
         character(StringLength)                         :: AuxChar
         
         !Begin-----------------------------------------------------------------
@@ -5230,11 +5251,13 @@ Module ModuleHDF5
         integer(HSIZE_T), dimension(7)                  :: dims, maxdims
         integer(HSIZE_T), dimension(7)                  :: dims_mem
         integer(HID_T)                                  :: dset_id, gr_id, datatype_id
-        integer(HID_T)                                  :: space_id, rank
-        integer(HID_T)                                  :: memspace_id, NumType, class_id
+        integer(HID_T)                                  :: space_id
+        integer                                         :: rank
+        integer(HID_T)                                  :: memspace_id, NumType
+        integer                                         :: class_id
         integer(HSSIZE_T), dimension(:), allocatable    :: offset_in
         integer(HSIZE_T ), dimension(:), allocatable    :: count_in
-        integer(HID_T)                                  :: STAT_CALL
+        integer                                         :: STAT_CALL
         character(StringLength)                         :: AuxChar
         
         !Begin-----------------------------------------------------------------
@@ -5390,11 +5413,13 @@ Module ModuleHDF5
         integer(HSIZE_T), dimension(7)                  :: dims, maxdims
         integer(HSIZE_T), dimension(7)                  :: dims_mem
         integer(HID_T)                                  :: dset_id, gr_id, datatype_id
-        integer(HID_T)                                  :: space_id, rank
-        integer(HID_T)                                  :: memspace_id, NumType, class_id
+        integer(HID_T)                                  :: space_id
+        integer                                         :: rank
+        integer(HID_T)                                  :: memspace_id, NumType
+        integer                                         :: class_id
         integer(HSSIZE_T), dimension(:), allocatable    :: offset_in
         integer(HSIZE_T ), dimension(:), allocatable    :: count_in
-        integer(HID_T)                                  :: STAT_CALL
+        integer                                         :: STAT_CALL
         character(StringLength)                         :: AuxChar
         
         !Begin-----------------------------------------------------------------
@@ -5543,11 +5568,13 @@ Module ModuleHDF5
         integer(HSIZE_T), dimension(7)                  :: dims, maxdims
         integer(HSIZE_T), dimension(7)                  :: dims_mem
         integer(HID_T)                                  :: dset_id, gr_id, datatype_id
-        integer(HID_T)                                  :: space_id, rank
-        integer(HID_T)                                  :: memspace_id, NumType, class_id
+        integer(HID_T)                                  :: space_id
+        integer                                         :: rank
+        integer(HID_T)                                  :: memspace_id, NumType
+        integer                                         :: class_id
         integer(HSSIZE_T), dimension(:), allocatable    :: offset_in
         integer(HSIZE_T ), dimension(:), allocatable    :: count_in
-        integer(HID_T)                                  :: STAT_CALL
+        integer                                         :: STAT_CALL
         character(StringLength)                         :: AuxChar
         
         !Begin-----------------------------------------------------------------
@@ -5681,11 +5708,13 @@ Module ModuleHDF5
         integer(HSIZE_T), dimension(7)                  :: dims, maxdims
         integer(HSIZE_T), dimension(7)                  :: dims_mem
         integer(HID_T)                                  :: dset_id, gr_id, datatype_id
-        integer(HID_T)                                  :: space_id, rank
-        integer(HID_T)                                  :: memspace_id, NumType, class_id
+        integer(HID_T)                                  :: space_id
+        integer                                         :: rank
+        integer(HID_T)                                  :: memspace_id, NumType
+        integer                                         :: class_id
         integer(HSSIZE_T), dimension(:), allocatable    :: offset_in
         integer(HSIZE_T ), dimension(:), allocatable    :: count_in
-        integer(HID_T)                                  :: STAT_CALL
+        integer                                         :: STAT_CALL
         character(StringLength)                         :: AuxChar
         
         !Begin-----------------------------------------------------------------
@@ -5841,11 +5870,13 @@ Module ModuleHDF5
         integer(HSIZE_T), dimension(7)                  :: dims, maxdims
         integer(HSIZE_T), dimension(7)                  :: dims_mem
         integer(HID_T)                                  :: dset_id, gr_id, datatype_id
-        integer(HID_T)                                  :: space_id, rank
-        integer(HID_T)                                  :: memspace_id, NumType, class_id
+        integer(HID_T)                                  :: space_id
+        integer                                         :: rank
+        integer(HID_T)                                  :: memspace_id, NumType
+        integer                                         :: class_id
         integer(HSSIZE_T), dimension(:), allocatable    :: offset_in
         integer(HSIZE_T ), dimension(:), allocatable    :: count_in
-        integer(HID_T)                                  :: STAT_CALL
+        integer                                         :: STAT_CALL
         character(StringLength)                         :: AuxChar
         
         !Begin-----------------------------------------------------------------
@@ -5995,11 +6026,13 @@ Module ModuleHDF5
         integer(HSIZE_T), dimension(7)                  :: dims, maxdims
         integer(HSIZE_T), dimension(7)                  :: dims_mem
         integer(HID_T)                                  :: dset_id, gr_id, datatype_id
-        integer(HID_T)                                  :: space_id, rank
-        integer(HID_T)                                  :: memspace_id, NumType, class_id
+        integer(HID_T)                                  :: space_id
+        integer                                         :: rank
+        integer(HID_T)                                  :: memspace_id, NumType
+        integer                                         :: class_id
         integer(HSSIZE_T), dimension(:), allocatable    :: offset_in
         integer(HSIZE_T ), dimension(:), allocatable    :: count_in
-        integer(HID_T)                                  :: STAT_CALL
+        integer                                         :: STAT_CALL
         character(StringLength)                         :: AuxChar
         
         !Begin-----------------------------------------------------------------
@@ -6133,11 +6166,13 @@ Module ModuleHDF5
         integer(HSIZE_T), dimension(7)                  :: dims, maxdims
         integer(HSIZE_T), dimension(7)                  :: dims_mem
         integer(HID_T)                                  :: dset_id, gr_id, datatype_id
-        integer(HID_T)                                  :: space_id, rank
-        integer(HID_T)                                  :: memspace_id, NumType, class_id
+        integer(HID_T)                                  :: space_id
+        integer                                         :: rank
+        integer(HID_T)                                  :: memspace_id, NumType
+        integer                                         :: class_id
         integer(HSSIZE_T), dimension(:), allocatable    :: offset_in
         integer(HSIZE_T ), dimension(:), allocatable    :: count_in
-        integer(HID_T)                                  :: STAT_CALL
+        integer                                         :: STAT_CALL
         character(StringLength)                         :: AuxChar
         
         !Begin-----------------------------------------------------------------
@@ -6293,11 +6328,13 @@ Module ModuleHDF5
         integer(HSIZE_T), dimension(7)                  :: dims, maxdims
         integer(HSIZE_T), dimension(7)                  :: dims_mem
         integer(HID_T)                                  :: dset_id, gr_id, datatype_id
-        integer(HID_T)                                  :: space_id, rank
-        integer(HID_T)                                  :: memspace_id, NumType, class_id
+        integer(HID_T)                                  :: space_id
+        integer                                         :: rank
+        integer(HID_T)                                  :: memspace_id, NumType
+        integer                                         :: class_id
         integer(HSSIZE_T), dimension(:), allocatable    :: offset_in
         integer(HSIZE_T ), dimension(:), allocatable    :: count_in
-        integer(HID_T)                                  :: STAT_CALL
+        integer                                         :: STAT_CALL
         character(StringLength)                         :: AuxChar
         
         !Begin-----------------------------------------------------------------
@@ -6457,11 +6494,13 @@ Module ModuleHDF5
         integer(HSIZE_T), dimension(7)                  :: dims, maxdims
         integer(HSIZE_T), dimension(7)                  :: dims_mem
         integer(HID_T)                                  :: dset_id, gr_id, datatype_id
-        integer(HID_T)                                  :: space_id, rank
-        integer(HID_T)                                  :: memspace_id, NumType, class_id
+        integer(HID_T)                                  :: space_id
+        integer                                         :: rank
+        integer(HID_T)                                  :: memspace_id, NumType
+        integer                                         :: class_id
         integer(HSSIZE_T), dimension(:), allocatable    :: offset_in
         integer(HSIZE_T ), dimension(:), allocatable    :: count_in
-        integer(HID_T)                                  :: STAT_CALL
+        integer                                         :: STAT_CALL
         character(StringLength)                         :: AuxChar
         
         !Begin-----------------------------------------------------------------
@@ -6582,7 +6621,7 @@ Module ModuleHDF5
         integer, optional                           :: STAT
 
         !Local-----------------------------------------------------------------
-        integer(HID_T)                              :: STAT_
+        integer                                     :: STAT_
         integer                                     :: ready_
 
         STAT_ = UNKNOWN_
@@ -6739,7 +6778,8 @@ Module ModuleHDF5
         character(len=*)                            :: FileName
 
         !Local-----------------------------------------------------------------
-        integer                                     :: FileID, STAT_CALL    
+        integer(HID_T)                              :: FileID
+        integer                                     :: STAT_CALL
         
         !Local-----------------------------------------------------------------
     
@@ -6792,12 +6832,12 @@ Module ModuleHDF5
         !Arguments-------------------------------------------------------------
         integer                                     :: HDF5ID
         character(len=*)                            :: GroupName
-        integer(HID_T), intent(OUT)                 :: nItems    
+        integer       , intent(OUT)                 :: nItems
         integer, optional                           :: STAT
 
         !Local-----------------------------------------------------------------
         integer                                     :: STAT_, ready_
-        integer(HID_T)                              :: STAT_CALL
+        integer                                     :: STAT_CALL
         integer(HID_T)                              :: gr_id
         
 
@@ -6854,7 +6894,8 @@ Module ModuleHDF5
         integer,  intent(OUT), optional             :: STAT
 
         !Local-----------------------------------------------------------------
-        integer(HID_T)                              :: gr_id, space_id, dset_id, rank
+        integer(HID_T)                              :: gr_id, space_id, dset_id
+        integer                                     :: rank
         integer(HSIZE_T), dimension(7)              :: dims, maxdims
 
 
@@ -6965,7 +7006,8 @@ Module ModuleHDF5
         integer,  intent(OUT), optional             :: STAT
 
         !Local-----------------------------------------------------------------
-        integer(HID_T)                              :: gr_id, space_id, dset_id, rank
+        integer(HID_T)                              :: gr_id, space_id, dset_id
+        integer                                     :: rank
 
         !Local-----------------------------------------------------------------
         integer                                     :: STAT_, ready_, STAT_CALL
@@ -7049,13 +7091,13 @@ Module ModuleHDF5
 
         !Local-----------------------------------------------------------------
         integer                                         :: STAT_, ready_
-        integer(HID_T)                                  :: STAT_CALL, rank_
+        integer                                         :: STAT_CALL, rank_
         integer(HID_T)                                  :: gr_id
         integer(HID_T)                                  :: dset_id
         integer(HID_T)                                  :: space_id
         !integer(HID_T)                                  :: class_id, size, datatype_id
         integer(HSIZE_T), dimension(7)                  :: dims, maxdims
-        integer(HID_T)                                  :: GroupType
+        integer                                         :: GroupType
         integer(HID_T)                                  :: attr_id, type_id
         character(len=StringLength)                     :: Units_
 
@@ -7160,14 +7202,14 @@ Module ModuleHDF5
 
         !Local-----------------------------------------------------------------
         integer                                         :: STAT_, ready_
-        integer(HID_T)                                  :: STAT_CALL
+        integer                                         :: STAT_CALL
         integer(HID_T)                                  :: gr_id
         integer(HID_T)                                  :: dset_id
         integer(HID_T)                                  :: space_id
         integer(HID_T)                                  :: datatype_id
-        integer(HID_T)                                  :: GroupType
+        integer                                         :: GroupType
         integer(SIZE_T)                                 :: size
-        integer(HID_T)                                  :: class_id
+        integer                                         :: class_id
 
         !Begin-----------------------------------------------------------------
 
@@ -7251,7 +7293,7 @@ if11 :              if (size == 8) then
         !Local-----------------------------------------------------------------
         integer                                         :: STAT_, ready_
         integer(4)                                      :: STAT_CALL
-        integer(HID_T)                                  :: nmembers
+        integer                                         :: nmembers
 
         !Begin-----------------------------------------------------------------
 
@@ -7403,7 +7445,7 @@ if11 :              if (size == 8) then
         character(len=1)                                :: GroupNameIn  
         integer                                         :: obj_type, idx
         integer                                         :: nmembersIn
-        integer(HID_T)                                 :: STAT_CALL
+        integer                                        :: STAT_CALL
 
         !Begin-----------------------------------------------------------------
 
@@ -7481,7 +7523,7 @@ if11 :              if (size == 8) then
         integer                                     :: STAT
         character(StringLength)                     :: NewGroupNameIn
         integer(HSIZE_T), dimension(:), allocatable :: dims, maxdims
-        integer(HID_T)                              :: rank, rank_out
+        integer                                     :: rank, rank_out
         integer(HID_T)                              :: memspace_id, NumType
         integer(HSSIZE_T), dimension(:), allocatable:: offset_in
         integer(HSIZE_T ), dimension(:), allocatable:: count_in
@@ -7678,12 +7720,12 @@ if11 :              if (size == 8) then
         character(len=*)                                :: FatherGroupName
         integer                                         :: GroupPosition
         character(len=*)                                :: GroupName
-        integer(HID_T)                                  :: GroupType
+        integer                                         :: GroupType
         integer, optional                               :: STAT
 
         !Local-----------------------------------------------------------------
         integer                                         :: STAT_, ready_
-        integer(HID_T)                                  :: STAT_CALL
+        integer                                         :: STAT_CALL
         integer(HID_T)                                  :: gr_id
 
         !Begin-----------------------------------------------------------------
@@ -7721,7 +7763,7 @@ if11 :              if (size == 8) then
     subroutine HDF5ReadGenericRealAttribute (HDF5ID, GroupName, ItemName, ItemType, AttributeName, ValueReal, STAT)
 
         !Arguments-------------------------------------------------------------
-        integer(HID_T)                              :: HDF5ID
+        integer                                     :: HDF5ID
         character(len=*)                            :: GroupName
         character(len=*)                            :: ItemName
         integer                                     :: ItemType
@@ -7731,7 +7773,7 @@ if11 :              if (size == 8) then
 
         !Local-----------------------------------------------------------------
         integer                                     :: STAT_, ready_
-        integer(HID_T)                              :: STAT_CALL        
+        integer                                     :: STAT_CALL
         integer(HID_T)                              :: gr_id, attr_id, dset_id
         integer(HSIZE_T), dimension(7)              :: dims
 
@@ -7816,7 +7858,7 @@ if11 :              if (size == 8) then
                                                AttributeName, ValueString, STAT)
 
         !Arguments-------------------------------------------------------------
-        integer(HID_T)                              :: HDF5ID
+        integer                                     :: HDF5ID
         character(len=*)                            :: GroupName
         character(len=*)                            :: ItemName
         integer                                     :: ItemType
@@ -7826,7 +7868,7 @@ if11 :              if (size == 8) then
 
         !Local-----------------------------------------------------------------
         integer                                     :: STAT_, ready_
-        integer(HID_T)                              :: STAT_CALL        
+        integer                                     :: STAT_CALL
         integer(HID_T)                              :: gr_id, attr_id, dset_id
         integer(HSIZE_T), dimension(7)              :: dims
 
@@ -7913,7 +7955,7 @@ if11 :              if (size == 8) then
                                                 ValueReal, STAT)
 
         !Arguments-------------------------------------------------------------
-        integer(HID_T), intent(IN)                                  :: HDF5ID
+        integer       , intent(IN)                                  :: HDF5ID
         character(len=*), intent(IN)                                :: GroupName
         character(len=*) , intent(IN)                               :: ItemName
         integer, intent(IN)                                         :: ItemType
@@ -7923,7 +7965,7 @@ if11 :              if (size == 8) then
 
         !Local-----------------------------------------------------------------
         integer                                                     :: STAT_, ready_
-        integer(HID_T)                                              :: STAT_CALL        
+        integer                                                     :: STAT_CALL
         integer(HID_T)                                              :: gr_id
         integer(HID_T)                                              :: attr_id
         integer(HID_T)                                              :: dset_id
@@ -8299,7 +8341,9 @@ cd1:    if (HDF5ID > 0) then
         character(StringLength)                     :: obj_name
         integer                                     :: obj_type, idx
         integer(HID_T)                              :: gr_id, dset_id
-        integer(HID_T)                              :: space_id, datatype_id, class_id, size
+        integer(HID_T)                              :: space_id, datatype_id
+        integer                                     :: class_id
+        integer(SIZE_T)                              :: size
         integer                                     :: STAT
         character(StringLength)                     :: NewGroupName
         integer(HSIZE_T), dimension(7)              :: dims, maxdims
