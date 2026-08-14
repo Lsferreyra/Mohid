@@ -85,7 +85,7 @@ def validate_serial_tree_normalization() -> list[str]:
             }
         )
         completed = subprocess.run(
-            [str(SMOKE_SCRIPT)],
+            ["bash", str(SMOKE_SCRIPT)],
             check=False,
             capture_output=True,
             env=environment,

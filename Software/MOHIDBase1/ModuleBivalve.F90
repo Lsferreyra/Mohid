@@ -5047,7 +5047,7 @@ cd1 :   if (ready_ .EQ. IDLE_ERR_)then
                 
                 if(Me%OutputON)then
                     write(*,*)"BIVALVE_OUTPUT_TIME is ON but no time series were defined in WaterProperties"
-                    stop'SetBivalveTimeSeries - ModuleBivalve - ERR01'
+                    stop 'SetBivalveTimeSeries - ModuleBivalve - ERR01'
                 endif
                 
                 Me%nIndexOutputs = 0
