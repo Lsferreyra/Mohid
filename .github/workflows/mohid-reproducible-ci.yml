@@ -1,0 +1,86 @@
+name: MOHID Water reproducible build
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/mohid-reproducible-ci.yml"
+      - "Software/MOHIDBase1/**"
+      - "Software/MOHIDBase2/**"
+      - "Software/MOHIDWater/**"
+      - "Solutions/dockers/MohidWater/**"
+      - "Solutions/dockers/externalSoftware/**"
+      - "Solutions/mohid-ci/**"
+      - "Solutions/mohid-in-linux/test/mohidwater/25m_deep/**"
+  push:
+    branches:
+      - master
+      - "codex/**"
+    paths:
+      - ".github/workflows/mohid-reproducible-ci.yml"
+      - "Software/MOHIDBase1/**"
+      - "Software/MOHIDBase2/**"
+      - "Software/MOHIDWater/**"
+      - "Solutions/dockers/MohidWater/**"
+      - "Solutions/dockers/externalSoftware/**"
+      - "Solutions/mohid-ci/**"
+      - "Solutions/mohid-in-linux/test/mohidwater/25m_deep/**"
+  workflow_dispatch:
+
+concurrency:
+  group: mohid-water-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  static-checks:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate source manifest and shell scripts
+        working-directory: Solutions/mohid-ci
+        run: make check
+
+  reference-ifort:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build compatibility reference
+        working-directory: Solutions/mohid-ci
+        run: make reference-build
+      - name: Run bundled smoke case
+        working-directory: Solutions/mohid-ci
+        run: bash ./scripts/run-container-case.sh reference
+      - name: Upload smoke evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reference-ifort-smoke-${{ github.sha }}
+          path: Solutions/mohid-ci/results/reference/
+          if-no-files-found: warn
+
+  modern-compilers:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+      matrix:
+        profile: [gfortran, ifx]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build modern diagnostic image
+        working-directory: Solutions/mohid-ci
+        run: make ${{ matrix.profile }}-build
+      - name: Run bundled smoke case
+        working-directory: Solutions/mohid-ci
+        run: bash ./scripts/run-container-case.sh ${{ matrix.profile }}
+      - name: Upload smoke evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.profile }}-smoke-${{ github.sha }}
+          path: Solutions/mohid-ci/results/${{ matrix.profile }}/
+          if-no-files-found: warn

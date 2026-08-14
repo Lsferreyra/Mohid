@@ -1,0 +1,74 @@
+FROM intel/oneapi:2026.1.0-devel-ubuntu22.04
+
+ARG DEBIAN_FRONTEND=noninteractive
+ARG HDF5_COMMIT=7bf340440909d468dbb3cf41f0ea0d87f5050cea
+ARG MOHID_GIT_SHA=unknown
+
+USER root
+
+RUN apt-get update \
+    && apt-get install --yes --no-install-recommends \
+        ca-certificates \
+        cmake \
+        git \
+        ninja-build \
+        zlib1g-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN git init /tmp/hdf5 \
+    && git -C /tmp/hdf5 remote add origin https://github.com/HDFGroup/hdf5.git \
+    && git -C /tmp/hdf5 fetch --depth 1 origin "${HDF5_COMMIT}" \
+    && git -C /tmp/hdf5 checkout --detach FETCH_HEAD \
+    && test "$(git -C /tmp/hdf5 rev-parse HEAD)" = "${HDF5_COMMIT}"
+
+RUN /bin/bash -lc 'source /opt/intel/oneapi/setvars.sh \
+    && cmake \
+        -S /tmp/hdf5 \
+        -B /tmp/hdf5-build \
+        -G Ninja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_C_COMPILER=icx \
+        -DCMAKE_Fortran_COMPILER=ifx \
+        -DCMAKE_INSTALL_PREFIX=/opt/hdf5 \
+        -DBUILD_SHARED_LIBS=OFF \
+        -DBUILD_TESTING=OFF \
+        -DHDF5_BUILD_CPP_LIB=OFF \
+        -DHDF5_BUILD_EXAMPLES=OFF \
+        -DHDF5_BUILD_FORTRAN=ON \
+        -DHDF5_BUILD_HL_LIB=ON \
+        -DHDF5_BUILD_JAVA=OFF \
+        -DHDF5_BUILD_TOOLS=OFF \
+        -DHDF5_ENABLE_PARALLEL=OFF \
+        -DHDF5_ENABLE_SZIP_SUPPORT=OFF \
+        -DHDF5_ENABLE_Z_LIB_SUPPORT=ON \
+    && cmake --build /tmp/hdf5-build --parallel 2 \
+    && cmake --install /tmp/hdf5-build'
+
+COPY . /opt/src/mohid
+
+RUN /bin/bash -lc 'source /opt/intel/oneapi/setvars.sh \
+    && cmake \
+        -S /opt/src/mohid/Solutions/mohid-ci \
+        -B /opt/build/mohid \
+        -G Ninja \
+        -DCMAKE_BUILD_TYPE=Debug \
+        -DCMAKE_Fortran_COMPILER=ifx \
+        -DHDF5_ROOT=/opt/hdf5 \
+        -DHDF5_USE_STATIC_LIBRARIES=ON \
+        -DMOHID_GIT_SHA="${MOHID_GIT_SHA}" \
+        -DMOHID_RUNTIME_CHECKS=ON \
+        -DMOHID_ENABLE_MPI=OFF \
+        -DMOHID_ENABLE_OPENMP=OFF \
+        -DMOHID_ENABLE_NETCDF=OFF \
+        -DMOHID_INSTANCE_LIMIT=increased \
+    && cmake --build /opt/build/mohid --parallel 2 \
+    && cmake --install /opt/build/mohid --prefix /opt/mohid'
+
+RUN useradd --create-home --uid 10001 mohid \
+    && mkdir --parents /case \
+    && chown mohid:mohid /case
+
+ENV PATH="/opt/mohid/bin:${PATH}"
+WORKDIR /case
+USER mohid
+ENTRYPOINT ["/opt/mohid/bin/MohidWater.exe"]

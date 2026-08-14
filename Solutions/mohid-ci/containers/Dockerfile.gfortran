@@ -1,0 +1,40 @@
+FROM ubuntu:24.04
+
+ARG DEBIAN_FRONTEND=noninteractive
+ARG MOHID_GIT_SHA=unknown
+
+RUN apt-get update \
+    && apt-get install --yes --no-install-recommends \
+        ca-certificates \
+        cmake \
+        gfortran \
+        libhdf5-dev \
+        ninja-build \
+        zlib1g-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY . /opt/src/mohid
+
+RUN cmake \
+        -S /opt/src/mohid/Solutions/mohid-ci \
+        -B /opt/build/mohid \
+        -G Ninja \
+        -DCMAKE_BUILD_TYPE=Debug \
+        -DCMAKE_Fortran_COMPILER=gfortran \
+        -DMOHID_GIT_SHA="${MOHID_GIT_SHA}" \
+        -DMOHID_RUNTIME_CHECKS=ON \
+        -DMOHID_ENABLE_MPI=OFF \
+        -DMOHID_ENABLE_OPENMP=OFF \
+        -DMOHID_ENABLE_NETCDF=OFF \
+        -DMOHID_INSTANCE_LIMIT=increased \
+    && cmake --build /opt/build/mohid --parallel 2 \
+    && cmake --install /opt/build/mohid --prefix /opt/mohid
+
+RUN useradd --create-home --uid 10001 mohid \
+    && mkdir --parents /case \
+    && chown mohid:mohid /case
+
+ENV PATH="/opt/mohid/bin:${PATH}"
+WORKDIR /case
+USER mohid
+ENTRYPOINT ["/opt/mohid/bin/MohidWater.exe"]
